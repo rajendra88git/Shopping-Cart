@@ -1,0 +1,30 @@
+<div class="main-container">
+    <header class="heading">Shopping Cart</header>
+    <div class="top-action-bar">
+        <button class="add-btn" type="button" (click)="openDialog()">Add Item</button>
+    </div>
+    <div class="table-container">
+        <div *ngIf="!showPlaceholder" class="column-headings">
+            <strong class="grid-item">Item No.</strong>
+            <strong class="grid-item">Product Name</strong>
+            <strong class="grid-item">Price</strong>
+            <strong class="grid-item">Action</strong>
+        </div>
+        <div *ngIf="!showPlaceholder" class="content">
+            <div class="row-content" *ngFor="let item of cartItems; let i = index;">
+                <label class="grid-item">{{ i+1 }}</label>
+                <label class="grid-item">{{ item.name }}</label>
+                <label class="grid-item">{{ item.price }}</label>
+                <div class="grid-item">
+                    <label class="editPointer" (click)="openDialog(item, 'edit')">Edit</label>
+                    <label>|</label>
+                    <label class="removePointer" (click)="removeItem(i)">Remove</label>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showPlaceholder" class="no-data-placeholder">
+            <label>Oops! Your shopping cart is empty.</label>
+            <label>Please add items to your cart.</label>
+        </div>
+    </div>
+</div>

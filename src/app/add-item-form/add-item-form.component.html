@@ -1,0 +1,17 @@
+<div id="add-item-dialog">
+    <div mat-dialog-content class="item-inputs">
+        <mat-form-field>
+            <mat-label>Product Name</mat-label>
+            <input type="text" [(ngModel)]="newItemName" minlength="1" maxlength="30" matInput (keyup)="updateItemName($event)">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input type="number" [(ngModel)]="newItemPrice" min="0" max="1000000" matInput (keyup)="updatePrice($event)">
+        </mat-form-field>
+        <label class="error" *ngIf="showError">Please enter price between 1 to 1000000</label>
+    </div>
+    <div mat-dialog-actions class="actionButtons">
+        <button class="btn" mat-button mat-raised-button (click)="dialogRef.close(false)">No Thanks</button>
+        <button class="btn" mat-button mat-raised-button (click)="addItem()" [disabled]="isAddButtonDisabled">Add</button>
+    </div>
+</div>
