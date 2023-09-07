@@ -29,7 +29,7 @@ export class AddItemFormComponent implements OnInit {
 
   updatePrice(event: any) {
     this.newItemPrice = event.target.value;
-    if (this.newItemPrice > 1000000) {
+    if (this.newItemPrice == '' || this.newItemPrice == 0 || this.newItemPrice > 1000000) {
       this.showError = true;
     } else {
       this.showError = false;
